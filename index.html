@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- html start: __________________________________________________________ -->
+<html>
+  <!-- head start:_________________________________________________________ -->
+  <head>
+    <meta http-equiv="content-type"
+          content="text/html; charset=UTF-8;charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- title: ___________________________________________________________ -->
+    <title>Flight Data</title>
+    <!-- styles: __________________________________________________________ -->
+    <link rel="stylesheet"
+          type="text/css"
+          href="css/leaflet.css"
+          media="all"/>
+    <link rel="stylesheet"
+          type="text/css"
+          href="css/site.css"
+          media="all"/>
+    <!-- scripts: _________________________________________________________ -->
+    <script src="js/leaflet.js"
+            charset="utf-8">
+    </script>
+    <script src="js/site.js"
+            charset="utf-8"
+            defer>
+    </script>
+  <!-- head end:___________________________________________________________ -->
+  </head>
+  <!-- body start: ________________________________________________________ -->
+  <body>
+    <!-- container start: _________________________________________________ -->
+    <div id="container"
+         class="container column">
+      <!-- header: ________________________________________________________ -->
+      <div id="header"
+           class="header row flex_center flex_no_grow">
+          <img id="header_img" class="header_image" src='images/plane.png'>
+      </div>
+      <!-- navigation: ____________________________________________________ -->
+      <div id="navigation"
+           class="navigation row flex_no_grow">
+      </div>
+      <!-- content: _______________________________________________________ -->
+      <div id="content"
+           class="content column">
+        <!-- title: _______________________________________________________ -->
+        <span class="content_vertical_space_1"></span>
+        <div id="content_title"
+             class="content_title row flex_center flex_no_grow">
+          <div class="content_title_item">
+            <h1>Flight Data</h1>
+          </div>
+        </div>
+        <!-- map and text: ________________________________________________ -->
+        <hr class="content_hr"/>
+        <div id="content_map"
+             class="row_wrap flex_justify">
+          <div id="content_map_map"
+               class="content_map_map flex_500 flex_grow">
+          </div>
+          <div id="content_map_text"
+               class="content_text column flex_400">
+            <span>
+              <p>
+                Flight data is from the <a
+                href="https://opensky-network.org/">OpenSky Network</a>.
+                The API can sometimes be slow to respond, so it may take a
+                while for the data to load and update.
+              </p><p>
+                Data is shown for flights within a 100km radius of Manchester
+                airport, and is updated every 20 seconds (if the OpenSky API
+                responds in time).
+              </p><p>
+                A random color is picked for each flight, and the circle size
+                is set based on altitude, with previous markers for each flight
+                reduced in size each time the data is updated. Markers older
+                than 60 seconds are removed with each update.
+              </p><p>
+                For more information about how the emissions data is
+                calculated, etc., please see the README on
+                <a href="https://github.com/cemacrr/flight-data">GitHub</a>.
+                It may be completely incorrect ...
+              </p>
+            </span>
+            <span class="content_vertical_space_2"></span>
+            <span class="flex_grow flex_end">
+              <h2>Statistics</h2>
+              <p>
+                <label class="content_stats_label">
+                  Data time period :
+                </label>
+                <span id="stats_observed_time" class="content_stats_value">
+                  --
+                </span><br>
+                <label class="content_stats_label">
+                  Planes on the ground :
+                </label>
+                <span id="stats_on_ground" class="content_stats_value">
+                  --
+                </span><br>
+                <label class="content_stats_label">
+                  Planes in the air :
+                </label>
+                <span id="stats_in_air" class="content_stats_value">
+                  --
+                </span><br>
+                <label class="content_stats_label">
+                  Total observed distance :
+                </label>
+                <span id="stats_total_distance" class="content_stats_value">
+                 --
+                </span><br>
+                <label class="content_stats_label">
+                  Total observed CO₂ emissions :
+                </label>
+                <span id="stats_total_emissions" class="content_stats_value">
+                 --
+                </span><br>
+              </p>
+            </span>
+            <span class="content_vertical_space_2"></span>
+          </div>
+        </div>
+        <span class="content_vertical_space_1"></span>
+      </div>
+      <!-- footer: ________________________________________________________ -->
+      <div id="footer"
+           class="footer row flex_no_grow">
+        <div id="footer_text"
+             class="footer_text flex_center row">
+        </div>
+      </div>
+    <!-- container end: ___________________________________________________ -->
+    </div>
+  <!-- body end: __________________________________________________________ -->
+  </body>
+<!-- html end: ____________________________________________________________ -->
+</html>
