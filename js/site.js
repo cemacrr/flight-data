@@ -527,7 +527,6 @@ function load_static_data() {
   flight_req.send(null);
 };
 
-
 /* load data: */
 function load_data() {
   /* create new request: */
