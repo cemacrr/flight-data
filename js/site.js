@@ -30,22 +30,6 @@ var flight_stats = {
   'total_emissions': null
 };
 
-/* function to increae / decrease circle sizes: */
-function update_markers(size_inc) {
-  for (var i = 0; i < flight_markers.length; i++) {
-    var old_size = flight_markers[i].getRadius();
-    if (old_size == 3) {
-      var new_size = 3;
-    } else {
-      var new_size = flight_markers[i].getRadius() + size_inc;
-    };
-    if (new_size < 3) {
-      new_size = 3;
-    };
-    flight_markers[i].setRadius(new_size);
-  };
-};
-
 /* load map function: */
 function load_map() {
 
@@ -80,36 +64,8 @@ function load_map() {
   /* add scale bar: */
   L.control.scale().addTo(map);
 
-  /* check zooming start: */
-  var zoom_start;
-  map.on('zoomstart', function() {
-    zoom_start = map.getZoom();
-  });
-
-  /* make markers bigger / smaller on zoom: */
+  /* on zoom ... : */
   map.on('zoomend', function() {
-    /* get zoom level: */
-    var zoom_end = map.getZoom();
-    /* inital circle size based on zoom level: */
-    if (zoom_start >= 13) {
-      if (13 > zoom_end >= 10) {
-        update_markers(-5);
-      } else if (10 > zoom_end) {
-        update_markers(-10);
-     };
-    } else if (13 > zoom_start >= 10) {
-      if (zoom_end >= 13) {
-        update_markers(+5);
-      } else if (10 > zoom_end) {
-        update_markers(-5);
-      };
-    } else if (10 > zoom_end) {
-      if (13 > zoom_end >= 10) {
-        update_markers(+5);
-      } else if (zoom_end >= 13) {
-        update_markers(+10);
-      };
-    };
     /* update stats: */
     update_stats();
   });
@@ -350,16 +306,8 @@ function update_data() {
     } else {
       var display_color = circle_color;
     };
-    /* try to set circle size based on altitude: */
-    var zoom_level = map.getZoom();
-    /* base circle size is based on zoom level: */
-    if (zoom_level >= 13) {
-      var circle_size = 15;
-    } else if (13 > zoom_level >= 10) {
-      var circle_size = 10;
-    } else {
-      var circle_size = 5;
-    };
+    /* try to set circle size based on altitude ... base circle size: */
+    var circle_size = 10;
     /* increase size based on altitude: */
     if (flight_geoalt != null) {
       var circle_inc = Math.round(flight_geoalt / 500) * 1;
